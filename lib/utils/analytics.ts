@@ -17,9 +17,14 @@ export async function getLocationFromIP(ip: string): Promise<LocationData> {
   }
 
   try {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 2000) // 2 second timeout
+    
     const response = await fetch(`http://ipapi.co/${ip}/json/`, {
-      timeout: 2000, // 2 second timeout
+      signal: controller.signal,
     })
+    
+    clearTimeout(timeoutId)
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)

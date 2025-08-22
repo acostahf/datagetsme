@@ -19,7 +19,15 @@ export default function DeviceAnalytics({ deviceTypes, operatingSystems, browser
 
   const renderCustomizedLabel = ({
     cx, cy, midAngle, innerRadius, outerRadius, percent
-  }: any) => {
+  }: {
+    cx?: number
+    cy?: number
+    midAngle?: number
+    innerRadius?: number
+    outerRadius?: number
+    percent?: number
+  }) => {
+    if (!percent || !cx || !cy || !midAngle || !innerRadius || !outerRadius) return null
     if (percent < 0.05) return null // Hide labels for slices < 5%
     
     const RADIAN = Math.PI / 180

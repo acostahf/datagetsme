@@ -61,7 +61,7 @@ export default function SignUpPage() {
               Check your email
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              We've sent a magic link to <strong>{email}</strong>. Click the link to create your account and sign in.
+              We&apos;ve sent a magic link to <strong>{email}</strong>. Click the link to create your account and sign in.
             </p>
             <button
               onClick={() => {

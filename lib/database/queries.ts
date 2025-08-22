@@ -236,15 +236,32 @@ export async function getTeamMembers(siteId: string): Promise<TeamMember[]> {
   
   const { data, error } = await supabase
     .from('team_members')
-    .select(`
-      *,
-      user:auth.users(email)
-    `)
+    .select('*')
     .eq('site_id', siteId)
     .order('created_at', { ascending: false })
 
   if (error) throw error
-  return data || []
+  
+  // Get user emails for each team member
+  const teamMembers = data || []
+  const membersWithEmails = await Promise.all(
+    teamMembers.map(async (member) => {
+      try {
+        const { data: userData } = await supabase.auth.admin.getUserById(member.user_id)
+        return {
+          ...member,
+          user: userData.user ? { email: userData.user.email || 'Unknown' } : undefined
+        }
+      } catch {
+        return {
+          ...member,
+          user: { email: 'Unknown' }
+        }
+      }
+    })
+  )
+  
+  return membersWithEmails
 }
 
 export async function getSiteInvitations(siteId: string): Promise<Invitation[]> {

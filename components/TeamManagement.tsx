@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import type { TeamMember, Invitation } from '@/lib/types/database'
 
 interface TeamManagementProps {
@@ -17,13 +17,7 @@ export default function TeamManagement({ siteId, isOpen, onClose }: TeamManageme
   const [inviteRole, setInviteRole] = useState<'admin' | 'viewer'>('viewer')
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    if (isOpen) {
-      fetchTeamData()
-    }
-  }, [isOpen, siteId])
-
-  const fetchTeamData = async () => {
+  const fetchTeamData = useCallback(async () => {
     try {
       setLoading(true)
       const response = await fetch(`/api/sites/${siteId}/team`)
@@ -36,7 +30,13 @@ export default function TeamManagement({ siteId, isOpen, onClose }: TeamManageme
     } finally {
       setLoading(false)
     }
-  }
+  }, [siteId])
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchTeamData()
+    }
+  }, [isOpen, siteId, fetchTeamData])
 
   const handleInvite = async (e: React.FormEvent) => {
     e.preventDefault()
