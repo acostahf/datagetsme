@@ -14,10 +14,10 @@ export async function GET(
       return new NextResponse('Site not found', { status: 404 })
     }
 
-    // Get the base URL for the tracking endpoint
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? process.env.NEXT_PUBLIC_APP_URL || 'https://your-app.vercel.app'
-      : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+    // Get the base URL from the request headers
+    const host = request.headers.get('host')
+    const protocol = request.headers.get('x-forwarded-proto') || 'http'
+    const baseUrl = `${protocol}://${host}`
 
     // Generate the tracking script
     const script = `

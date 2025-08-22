@@ -94,8 +94,6 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
-# Application Configuration  
-NEXT_PUBLIC_APP_URL=https://your-domain.com
 ```
 
 ### 3.3 Deploy
@@ -113,10 +111,11 @@ NEXT_PUBLIC_APP_URL=https://your-domain.com
 3. Configure DNS records as shown by Vercel
 4. Wait for DNS propagation (up to 24 hours)
 
-### 4.2 Update Environment Variables
+### 4.2 Update Domain Configuration
 
-1. Update `NEXT_PUBLIC_APP_URL` to your custom domain
-2. Redeploy the project
+1. The application automatically detects your custom domain
+2. No environment variable changes needed
+3. Redeploy the project
 
 ## Phase 5: Post-Deployment Testing
 
@@ -182,9 +181,9 @@ NEXT_PUBLIC_APP_URL=https://your-domain.com
 ### Common Issues
 
 **Authentication Not Working**:
-- Check Supabase redirect URLs
-- Verify NEXT_PUBLIC_APP_URL matches deployment URL
+- Check Supabase redirect URLs match your deployment domain
 - Ensure Supabase Auth is configured with correct redirect URLs
+- Verify Site URL in Supabase Auth settings
 
 **Tracking Not Working**:
 - Verify CORS headers in next.config.ts

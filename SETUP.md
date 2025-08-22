@@ -18,8 +18,6 @@ NEXT_PUBLIC_SUPABASE_URL=your_actual_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_actual_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_actual_service_role_key
 
-# Application Configuration
-NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 # MCP Configuration (for development)
 SUPABASE_ACCESS_TOKEN=your_personal_access_token
@@ -155,7 +153,6 @@ Update your `.env.local` for production:
 NEXT_PUBLIC_SUPABASE_URL=your_production_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_production_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_production_service_role_key
-NEXT_PUBLIC_APP_URL=https://yourdomain.com
 ```
 
 ### Deploy Steps

@@ -14,9 +14,7 @@ export default function SitesList({ sites }: SitesListProps) {
   const [teamManagementSite, setTeamManagementSite] = useState<string | null>(null)
 
   const generateTrackingScript = (siteId: string) => {
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? process.env.NEXT_PUBLIC_APP_URL || 'https://your-app.vercel.app'
-      : 'http://localhost:3000'
+    const baseUrl = window.location.origin
     
     return `<!-- DataGetsMe Tracking Script -->
 <script async src="${baseUrl}/api/script/${siteId}"></script>
