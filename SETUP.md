@@ -18,9 +18,8 @@ NEXT_PUBLIC_SUPABASE_URL=your_actual_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_actual_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_actual_service_role_key
 
-# Next.js Configuration
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=generate_a_random_string_here
+# Application Configuration
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 # MCP Configuration (for development)
 SUPABASE_ACCESS_TOKEN=your_personal_access_token
@@ -156,8 +155,7 @@ Update your `.env.local` for production:
 NEXT_PUBLIC_SUPABASE_URL=your_production_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_production_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_production_service_role_key
-NEXTAUTH_URL=https://yourdomain.com
-NEXTAUTH_SECRET=your_secure_production_secret
+NEXT_PUBLIC_APP_URL=https://yourdomain.com
 ```
 
 ### Deploy Steps

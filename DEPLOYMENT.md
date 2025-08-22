@@ -96,13 +96,6 @@ SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
 # Application Configuration  
 NEXT_PUBLIC_APP_URL=https://your-domain.com
-NEXTAUTH_URL=https://your-domain.com
-NEXTAUTH_SECRET=your_32_char_random_string
-```
-
-**Generate NEXTAUTH_SECRET**:
-```bash
-openssl rand -base64 32
 ```
 
 ### 3.3 Deploy
@@ -123,8 +116,7 @@ openssl rand -base64 32
 ### 4.2 Update Environment Variables
 
 1. Update `NEXT_PUBLIC_APP_URL` to your custom domain
-2. Update `NEXTAUTH_URL` to your custom domain
-3. Redeploy the project
+2. Redeploy the project
 
 ## Phase 5: Post-Deployment Testing
 
@@ -191,8 +183,8 @@ openssl rand -base64 32
 
 **Authentication Not Working**:
 - Check Supabase redirect URLs
-- Verify NEXTAUTH_URL matches deployment URL
-- Check NEXTAUTH_SECRET is set
+- Verify NEXT_PUBLIC_APP_URL matches deployment URL
+- Ensure Supabase Auth is configured with correct redirect URLs
 
 **Tracking Not Working**:
 - Verify CORS headers in next.config.ts

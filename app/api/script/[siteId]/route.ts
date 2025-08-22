@@ -16,8 +16,8 @@ export async function GET(
 
     // Get the base URL for the tracking endpoint
     const baseUrl = process.env.NODE_ENV === 'production' 
-      ? process.env.NEXTAUTH_URL || 'https://yourdomain.com'
-      : process.env.NEXTAUTH_URL || 'http://localhost:3000'
+      ? process.env.NEXT_PUBLIC_APP_URL || 'https://your-app.vercel.app'
+      : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
     // Generate the tracking script
     const script = `
