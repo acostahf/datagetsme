@@ -1,4 +1,4 @@
-# SimpleAnalytics Setup Guide
+# DataGetsMe Setup Guide
 
 ## 1. Supabase Configuration
 
