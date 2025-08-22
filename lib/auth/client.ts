@@ -2,15 +2,9 @@ import { createClient } from '@/lib/supabase/client'
 
 // Get the correct redirect URL for magic links
 function getRedirectUrl(): string {
-  // In production, you can hardcode your production domain
-  // or use an environment variable
-  if (process.env.NODE_ENV === 'production') {
-    // Use hardcoded production domain for reliable magic link redirects
-    return 'https://datagetsme.vercel.app/auth/callback'
-  }
-  
-  // In development, use localhost
-  return `${window.location.origin}/auth/callback`
+  // Always use production domain for magic links to work consistently
+  // This ensures magic links work whether sent from dev or production
+  return 'https://datagetsme.vercel.app/auth/callback'
 }
 
 export async function signUp(email: string, password?: string) {
